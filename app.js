@@ -61,9 +61,17 @@ app.get('/', function(req, res) {
   }
 });
 
-//app.get('/asset/:asset_id, function (req, res) {
-//     res.sendFile('/assets/' + asset_id);
-//});
+app.get('/asset/:name, function (req, res) {
+     
+	 var fileName = req.params.name;
+     res.sendFile(fileName, options, function (err) {
+    if (err) {
+      next(err);
+    } else {
+      console.log('Sent:', fileName);
+    }
+  });
+});
 
 app.get('/setup', function(req, res) {
   if (isSetup()) {

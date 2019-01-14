@@ -8,8 +8,8 @@
     "sideload": "office-toolbox sideload -m manifest.xml -a Excel",
     "build": "webpack --mode production",
     "validate": "office-toolbox validate -m manifest.xml",
-	"start": "node server.js", // serves the application
-    "heroku-postbuild": "webpack -p" // runs after installation
+	"start": "node server.js", 
+    "heroku-postbuild": "webpack -p" 
   },
   "dependencies": {
     "@angular/common": "^5.2.9",

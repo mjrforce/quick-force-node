@@ -61,6 +61,10 @@ app.get('/', function(req, res) {
   }
 });
 
+app.get('/asset/:asset_id, function (req, res) {
+     res.sendFile('/assets/' + asset_id);
+});
+
 app.get('/setup', function(req, res) {
   if (isSetup()) {
     res.redirect('/');

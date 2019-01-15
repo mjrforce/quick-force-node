@@ -1,14 +1,27 @@
-const express = require('express');
-const path = require('path');
-const port = process.env.PORT || 8080;
-const app = express();
+var express = require('express');
+var app = express();
 
-// the __dirname is the current directory from where the script is running
-app.use(express.static(__dirname));
+require('dotenv').config()
 
-// send the user to index html page inspite of the url
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'index.html'));
+app.set('port', (process.env.PORT || 5000));
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/dist');
+
+app.get('/', function(request, response) {
+  var env = process.env.APP_ENV;
+  if (env == 'staging') {
+    var envName = 'staging'
+  } else if (env == 'production') {
+    var envName = 'production'
+  } else {
+    var envName = 'review app'
+  }
+  response.render('index.html', { env: envName});
 });
 
-app.listen(port);
+app.listen(app.get('port'), function() {
+  console.log("Node app running at localhost:" + app.get('port'));
+});
+
+module.exports = app

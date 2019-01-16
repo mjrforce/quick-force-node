@@ -8,7 +8,7 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/dist');
 app.get('/:filename', function(request, response) {
-	  response.render(filename);
+	  response.render(filename, {});
 });
 	
 app.get('/', function(request, response) {

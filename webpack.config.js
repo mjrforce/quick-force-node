@@ -39,7 +39,7 @@ module.exports = {
 		new CopyWebpackPlugin([
 			{
 			  from: './app.css',
-			  to: '/dist/app.css',
+			  to: '/app.css',
 			  toType: 'file'
 			}
 		])

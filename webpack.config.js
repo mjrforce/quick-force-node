@@ -6,6 +6,7 @@ module.exports = {
         'app': './src/index.js',
         'function-file': './function-file/function-file.js'
     },
+	output: { publicPath: '/' },
     module: {
         rules: [
             {

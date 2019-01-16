@@ -8,7 +8,16 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/dist');
 app.get('/:filename', function(request, response) {
-	  response.render(filename, {});
+     var env = process.env.APP_ENV;
+  if (env == 'staging') {
+    var envName = 'staging'
+  } else if (env == 'production') {
+    var envName = 'production'
+  } else {
+    var envName = 'review app'
+  }
+	 console.log(filename);	 
+	 response.render(filename, {env: envName});
 });
 	
 app.get('/', function(request, response) {

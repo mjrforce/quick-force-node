@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -34,6 +35,12 @@ module.exports = {
             template: './function-file/function-file.html',
             filename: 'function-file/function-file.html',
             chunks: ['function-file']
-        })
-    ]
-};
+        }),
+		new CopyWebpackPlugin([
+			{
+			  from: './app.css',
+			  to: '/dist/app.css',
+			  toType: 'file'
+			}
+		])
+]};

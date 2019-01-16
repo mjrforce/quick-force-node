@@ -6,6 +6,11 @@ module.exports = {
         app: './src/index.js',
         'function-file': './function-file/function-file.js'
     },
+	output: {
+	  path: path.join(__dirname, 'dist'),
+	  filename: 'bundle.js',
+	  publicPath: '/'
+	 },
     module: {
         rules: [
             {
